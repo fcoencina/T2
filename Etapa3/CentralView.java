@@ -5,6 +5,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+/*
+* Clase de la vista de la central
+*/
 public class CentralView extends VBox {
     private Central cenModel;
     private final Label display;
@@ -30,9 +33,17 @@ public class CentralView extends VBox {
         hBox.setSpacing(15);
         getChildren().addAll(display,hBox);
     }
+    /*
+    * Función para agregar un mensaje a la pantalla
+    * @param msg Es el mensaje a agregar
+    */
     public void setDisplay (String msg) {
         display.setText(msg);
     }
+    /*
+    * Función para el modelo a la central
+    * @param model es le modelo de la central
+    */
     public void setCentralModel(Central model){
         cenModel = model;
         //pBtn.setOnAction(event -> cenModel.armPerimeter());
