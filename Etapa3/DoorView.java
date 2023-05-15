@@ -5,7 +5,10 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-
+    
+/**
+* Clase para la vista de la puerta
+*/
 public class DoorView extends Group {
     private TranslateTransition transition;
     private Door doorModel;
@@ -18,6 +21,9 @@ public class DoorView extends Group {
         //getTransforms().add(new Rotate(angle,x,y));  // to rotate at anchor pivot (40,50)
         prepareOpen_CloseTransition();
     }
+    /**
+    * Función para la creación de la puerta sin sensor
+    */
     private void makeDoorViewWithoutSensor(){
         Polygon origenPillar = new Polygon();
         origenPillar.getPoints().addAll(0d,0d,
@@ -46,6 +52,10 @@ public class DoorView extends Group {
         getChildren().addAll(border);
         getChildren().addAll(origenPillar, switchPillar,slidingSheet);
     }
+    /**
+    * Función para agregar modelo a la puerta
+    * @param model Es el modelo de la puerta
+    */
     public void setDoorModel(Door model) {
         doorModel = model;
         this.setOnMouseClicked(event -> {
@@ -56,27 +66,44 @@ public class DoorView extends Group {
             doorModel.changeState();
         });
     }
+    /**
+    * Función para agregar la vista del sensor a la puerta 
+    * @param msView la vista del sensor de la puerta 
+    */
     public void addMagneticSensorView(MagneticSensorView msView){
         placeMagneticSensor(msView);
         //....
         getChildren().add(msView);
     }
+    /**
+    * Función para agregar el lugar del sensor a la puerta 
+    * @param mv Es la vista del Sensor magnético
+    */
     private void placeMagneticSensor( MagneticSensorView mv){
         mv.getMagnetView().setX(slidingSheet.getX()+slidingSheet.getWidth()-mv.getMagnetView().getWidth());
         //...
         mv.getSwitchView().setY(switchPillar.getBoundsInLocal().getHeight());
     }
+    /**
+    * Función para la vista de cierre y de apretura de la puerta 
+    */
     private void prepareOpen_CloseTransition(){
         transition = new TranslateTransition(Duration.millis(1000), slidingSheet);
         transition.setCycleCount(1);
         //transition.setOnFinished();
     }
+    /**
+    * Función para abrir la puerta
+    */
     public void startOpening(){
         transition.stop();
         transition.setFromX(slidingSheet.getTranslateX());// in case the user decides to close before it opens.
         transition.setToX(-130);
         transition.play();
     }
+    /**
+    * Función para cerrar la puerta
+    */
     public void startClosing(){
         transition.stop();
         transition.setFromX(slidingSheet.getTranslateX());  // in case the user decides to open before it closes.
