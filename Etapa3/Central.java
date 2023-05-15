@@ -4,7 +4,7 @@ import javafx.animation.Timeline;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import java.util.ArrayList;
-/*
+/**
 * clase Central
 */
 public class Central {
@@ -14,7 +14,7 @@ public class Central {
     private final Siren siren;
     private final Timeline periodicCheck;
     private final CentralView view;
-    /*
+    /**
     * Constructor de la clase Central
     * @param siren Sirena con la que se creará la central
     */
@@ -30,14 +30,14 @@ public class Central {
         periodicCheck.setCycleCount(Animation.INDEFINITE);
         periodicCheck.play();
     }
-    /*
+    /**
     * Función para obtener la vista
     * @return La vista de central
     */
     public VBox getView (){
         return view;
     }
-    /*
+    /**
     * Función para verificar las zonas de la central
     */
     private void checkZones(){
@@ -62,7 +62,7 @@ public class Central {
             }
         }
     }
-    /*
+    /**
     * Función que verifica si las zonas están cerradas
     * @return un boolean que indica si están cerradas
     */
@@ -73,7 +73,7 @@ public class Central {
         }
         return close;
     }
-    /*
+    /**
     * Función para armar todas las zonas de la central
     */
     public void armAll() {
@@ -88,28 +88,28 @@ public class Central {
             view.setDisplay(msg);
         }
     }
-    /*
+    /**
     * Función para desarmar la alarma
     */
     public void disarm() {
         state = CentralState.DISARMED;
         view.setDisplay("Alarm was disarmed!");
     }
-    /*
+    /**
     * Función para agregar un sensor a la zona
     * @param s Es el sensor a agregar
     */
     public void addNewSensor(Sensor s){
         zones.add(s);
     }
-    /*
+    /**
     * Función para agregar una persona a la zona
     * @param p Es la persona a agregar
     */
     public void addNewPerson(Person p){
         people.add(p);
     }
-    /*
+    /**
     * Función para comprobar el estado de la alarma, si está armada o desarmada
     */
     enum CentralState {
