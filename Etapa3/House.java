@@ -2,7 +2,15 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+* Clase casa
+*/
 public class House extends Pane {
+    /**
+    * Constructor de la clase casa
+    * @param in Inpur del usuario para la creación de la clase
+    * @param central Central que tendrá la casa
+    */
     public House(Scanner in, Central central) {
         // reading <#_doors> <#_windows> <#_PIRs>
         int numDoors = in.nextInt();
